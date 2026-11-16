@@ -1,0 +1,103 @@
+/* Shared palette and spacing make the site easy to maintain. */
+:root {
+  --paper: #f7f6f0;
+  --ink: #202e29;
+  --muted: #535f58;
+  --green: #245b43;
+  --line: #cbd2c8;
+  --tint: #e5eadf;
+}
+/* Element selectors: consistent defaults for the whole document. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: 1rem; line-height: 1.65; }
+a { color: var(--green); text-underline-offset: .25em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--green); outline-offset: 5px; border-radius: 2px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+h3 { font-size: 1.05rem; line-height: 1.45; }
+ul { padding-left: 1.25rem; }
+/* Class selectors: reusable layout and component styles. */
+.container { width: min(1120px, calc(100% - 4rem)); margin-inline: auto; }
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); }
+.navigation { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1rem; }
+.wordmark { font-family: Georgia, serif; font-size: 1.8rem; font-weight: 700; line-height: 1.2; text-decoration: none; }
+.nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem 1.8rem; list-style: none; padding: 0; margin: 0; }
+.nav-links a { display: inline-block; padding-block: .35rem; font-size: .88rem; text-decoration: none; }
+.nav-links a:hover { text-decoration: underline; }
+.hero { display: flex; align-items: center; gap: 5rem; padding-block: 5.5rem 5rem; }
+.hero-copy { flex: 1 1 0; min-width: 0; }
+.eyebrow, .note-label { display: block; font-size: .74rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; }
+.eyebrow { color: var(--green); margin-bottom: 1.5rem; }
+h1 { font-size: clamp(3.6rem, 7vw, 6rem); line-height: .99; letter-spacing: -.055em; }
+.accent { color: var(--green); }
+.lead { margin-top: 1.8rem; font-size: 1.45rem; line-height: 1.4; }
+.intro-text { color: var(--muted); max-width: 36rem; margin-top: 1.1rem; }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.8rem; margin-top: 1.8rem; padding: .8rem 1.1rem; border: 1px solid var(--green); text-decoration: none; font-size: .9rem; transition: background-color .15s, color .15s; }
+.button:hover { background: var(--green); color: var(--paper); }
+.profile-note { flex: 0 1 330px; padding: 2.4rem; background: var(--tint); border-top: 3px solid var(--green); }
+.profile-note h2 { font-size: 2.6rem; line-height: 1.15; letter-spacing: -.035em; margin-block: 2rem 1.3rem; }
+.profile-note p { font-size: .95rem; }
+.note-divider { width: 2.5rem; height: 1px; background: var(--green); margin-block: 2rem 1.1rem; }
+.profile-note .note-caption { font-size: .8rem; color: var(--muted); }
+.resume-section { display: flex; gap: 3rem; padding-block: 3rem; border-top: 1px solid var(--line); }
+.section-heading { flex: 0 0 230px; }
+.section-number { color: var(--green); font-size: .75rem; letter-spacing: .1em; margin-bottom: .5rem; }
+.section-heading h2 { font-size: 2rem; letter-spacing: -.03em; }
+.section-content { flex: 1; min-width: 0; }
+.entry + .entry { margin-top: 1.7rem; padding-top: 1.7rem; border-top: 1px solid var(--line); }
+.entry-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; margin-bottom: .4rem; }
+.date { flex-shrink: 0; color: var(--muted); font-size: .8rem; }
+.detail { color: var(--green); font-size: .9rem; margin-top: .3rem; }
+.role { color: var(--green); font-size: .95rem; }
+.experience-list { margin-block: 1.1rem 0; }
+.experience-list li + li { margin-top: .65rem; }
+.achievement-list { list-style: none; padding: 0; margin: 0; }
+.achievement-list li + li { margin-top: 1.4rem; }
+.achievement-list p { color: var(--muted); font-size: .92rem; margin-top: .2rem; }
+.skills-layout { display: flex; flex-wrap: wrap; gap: 2rem; }
+.skills-layout > div { flex: 1 1 150px; }
+.skill-list { list-style: none; padding: 0; margin: .75rem 0 0; color: var(--muted); }
+.skill-list li { margin-top: .25rem; }
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--line); padding-block: 1.8rem 2.5rem; font-size: .85rem; }
+/* ID selector: a unique introduction section receives a stronger divider. */
+#intro { border-bottom: 3px solid var(--green); }
+#education { border-top: 0; }
+/* The skip link stays outside the view until a keyboard user focuses it. */
+.skip-link { position: absolute; left: 1rem; top: -6rem; padding: .7rem 1rem; background: var(--ink); color: white; z-index: 20; }
+.skip-link:focus { top: 1rem; }
+/* Stack the layout as space becomes limited, without changing reading order. */
+@media (max-width: 850px) {
+  .hero { gap: 2rem; padding-block: 3.5rem; }
+  .profile-note { flex-basis: 280px; padding: 1.7rem; }
+  .resume-section { gap: 2rem; }
+  .section-heading { flex-basis: 170px; }
+  .entry-heading { flex-direction: column; gap: .25rem; }
+}
+@media (max-width: 620px) {
+  .container { width: calc(100% - 2rem); }
+  .navigation { align-items: flex-start; gap: .75rem; padding-block: .75rem; }
+  .nav-links { gap: .25rem 1rem; }
+  .nav-links a { font-size: .78rem; }
+  .hero { flex-direction: column; align-items: stretch; gap: 2.5rem; padding-block: 3rem; }
+  .profile-note { flex-basis: auto; }
+  .profile-note h2 { margin-top: 1.2rem; }
+  .resume-section { flex-direction: column; gap: 1.5rem; padding-block: 2.25rem; }
+  .section-heading { flex-basis: auto; }
+  .section-heading h2 { font-size: 1.8rem; }
+  .site-footer { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}
+@media print {
+  .site-header, .skip-link, .button, .site-footer a { display: none; }
+  body { background: white; font-size: 10pt; }
+  .container { width: 100%; }
+  .hero { padding-block: 1rem 2rem; gap: 2rem; }
+  h1 { font-size: 44pt; }
+  .resume-section { padding-block: 1.3rem; break-inside: avoid; }
+  .section-heading { flex-basis: 150px; }
+}
